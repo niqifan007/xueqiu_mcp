@@ -12,11 +12,11 @@
 
 ```bash
 # 克隆仓库
-git clone <您的仓库地址>
+git clone https://github.com/liqiongyu/xueqiu_mcp.git
 cd xueqiu_mcp
 
 # 使用uv安装依赖
-uv pip install -e .
+uv venv && uv pip install -e .
 ```
 
 ## 配置
@@ -28,6 +28,12 @@ uv pip install -e .
 
 ```
 XUEQIU_TOKEN=您的雪球token
+```
+
+* 快捷方式：
+
+```bash
+echo 'XUEQIU_TOKEN="xq_a_token=xxxxx;u=xxxx"' > .env
 ```
 
 关于如何获取雪球token，请参考[pysnowball文档](https://github.com/uname-yang/pysnowball/blob/master/how_to_get_token.md)。
@@ -61,6 +67,12 @@ uv --directory /path/to/xueqiu_mcp run main.py
 - 获取深港通/沪港通北向数据
 - 基金相关数据查询
 - 关键词搜索股票代码
+
+## 展示图
+
+![image](./images/cursor_mcp.png)
+
+![image](./images/claude_mcp.png)
 
 ## 致谢
 
