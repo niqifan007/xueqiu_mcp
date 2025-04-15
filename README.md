@@ -81,4 +81,4 @@ uv --directory /path/to/xueqiu_mcp run main.py
 
 ## 许可证
 
-[添加您的许可证信息]
+[MIT License](./LICENSE)
