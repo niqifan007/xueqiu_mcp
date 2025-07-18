@@ -83,9 +83,15 @@ def pankou(stock_code: str="SZ000002") -> dict:
 
 
 @mcp.tool()
-def kline(stock_code: str="SZ000002", days: int = 100) -> dict:
-    """获取K线数据。第二参数可制定从现在到N天前，默认100"""
-    result = ball.kline(stock_code, days)
+def kline(stock_code: str = "SZ000002", period: str = "day", count: int = 284) -> dict:
+    """获取K线数据
+
+    Args:
+        stock_code: 股票代码
+        period: K线周期, 如 'day', 'week', 'month'
+        count: 返回的K线数量
+    """
+    result = ball.kline(stock_code, period=period, count=count)
     return process_data(result)
 
 
@@ -292,6 +298,28 @@ def rebalancing_history(cube_symbol: str="SZ000002") -> dict:
         cube_symbol: 组合代码
     """
     result = ball.rebalancing_history(cube_symbol)
+    return process_data(result)
+
+
+@mcp.tool()
+def rebalancing_current(cube_symbol: str = "SZ000002") -> dict:
+    """获取组合当前持仓信息
+
+    Args:
+        cube_symbol: 组合代码
+    """
+    result = ball.rebalancing_current(cube_symbol)
+    return process_data(result)
+
+
+@mcp.tool()
+def quote_current(cube_symbol: str = "SZ000002") -> dict:
+    """获取组合当前行情信息
+
+    Args:
+        cube_symbol: 组合代码
+    """
+    result = ball.quote_current(cube_symbol)
     return process_data(result)
 
 

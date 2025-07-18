@@ -370,15 +370,15 @@ wheels = [
 
 [[package]]
 name = "pysnowball"
-version = "0.1.3"
+version = "0.1.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5e/57/552563ff50eb982854b51defd1ed7d473b504f333d78b0a31125b68bfae6/pysnowball-0.1.3.tar.gz", hash = "sha256:1ac09a91f2803bbd2545e36f3971572c585faa5f0b9cb4f835adc212556cd769", size = 23198 }
+sdist = { url = "https://files.pythonhosted.org/packages/af/23/e6eb6fa773437d93f5767ae0a8e55bd5ded22a4aacf829c1bd8a93f46f19/pysnowball-0.1.5.tar.gz", hash = "sha256:3ba0ce2b2367cf844a809726b7b05e4d726a2f4eef958a4ca94563906f78c8dc", size = 28238 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/d2/50578f2fafdeece6e5d10330f4c91aa1e89fc4e6d417c9a48c9428a4c262/pysnowball-0.1.3-py3-none-any.whl", hash = "sha256:7f45ee94a0e350c43531aed3e9c4335746d818fec2438ad4a1b825c4f12d8b39", size = 15930 },
+    { url = "https://files.pythonhosted.org/packages/9f/c1/2c0bc4da6ef22b6486ad156690a53aca5807e03847767991428815ffa20e/pysnowball-0.1.5-py3-none-any.whl", hash = "sha256:33d5efcef74f8b4d840d1416aae0b9380f427653b103a0ff42a5af9a9ee55bb7", size = 16121 },
 ]
 
 [[package]]
@@ -582,5 +582,5 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastmcp", specifier = ">=2.1.2" },
-    { name = "pysnowball", specifier = ">=0.1.3" },
+    { name = "pysnowball", specifier = ">=0.1.5" },
 ]
