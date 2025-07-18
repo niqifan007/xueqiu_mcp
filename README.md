@@ -12,7 +12,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/liqiongyu/xueqiu_mcp.git
+git clone https://github.com/niqifan007/xueqiu_mcp.git
 cd xueqiu_mcp
 
 # 使用uv安装依赖
