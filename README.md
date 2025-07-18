@@ -6,6 +6,11 @@
 
 本项目基于[pysnowball](https://github.com/uname-yang/pysnowball)封装了雪球API，并通过MCP协议提供服务，使您能够在Claude等AI助手中直接查询股票数据。
 
+本项目基于[liqiongyu/xueqiu_mcp](https://github.com/liqiongyu/xueqiu_mcp)进行开发，感谢原作者的贡献。
+
+- 修复了K线数据获取的格式问题
+- 添加了基金持仓数据获取接口
+
 ## 安装方法
 
 本项目使用`uv`进行依赖管理。请按照以下步骤进行安装：
@@ -77,7 +82,7 @@ uv --directory /path/to/xueqiu_mcp run main.py
 ## 致谢
 
 - [pysnowball](https://github.com/uname-yang/pysnowball) - 雪球股票数据接口的Python版本
-- [fastmcp](https://github.com/fastmcp) - MCP服务框架
+- [fastmcp](https://github.com/jlowin/fastmcp) - MCP服务框架
 
 ## 许可证
 
