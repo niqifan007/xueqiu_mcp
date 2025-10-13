@@ -4,12 +4,13 @@
 
 ## 项目简介
 
-本项目基于[pysnowball](https://github.com/uname-yang/pysnowball)封装了雪球API，并通过MCP协议提供服务，使您能够在Claude等AI助手中直接查询股票数据。
+本项目基于[pysnowball](https://github.com/uname-yang/pysnowball)封装了雪球API（现已适配至0.1.8版新增接口），并通过MCP协议提供服务，使您能够在Claude等AI助手中直接查询股票数据。
 
 本项目基于[liqiongyu/xueqiu_mcp](https://github.com/liqiongyu/xueqiu_mcp)进行开发，感谢原作者的贡献。
 
 - 修复了K线数据获取的格式问题
 - 添加了基金持仓数据获取接口
+- 覆盖pysnowball 0.1.8新增的F10与财务报表明细接口
 
 ## 安装方法
 
@@ -71,6 +72,8 @@ uv --directory /path/to/xueqiu_mcp run main.py
 - 查询指数收益
 - 获取深港通/沪港通北向数据
 - 基金相关数据查询
+- F10股东/股本变动、业务分析等扩展数据
+- 新版财务报表V2接口（资产负债表、利润表、现金流量表、业绩指标）
 - 关键词搜索股票代码
 
 ## 展示图

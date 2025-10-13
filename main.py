@@ -117,9 +117,14 @@ def capital_flow(stock_code: str="SZ000002") -> dict:
 
 
 @mcp.tool()
-def capital_history(stock_code: str="SZ000002") -> dict:
-    """获取历史资金流如流出数据，每日数据"""
-    result = ball.capital_history(stock_code)
+def capital_history(stock_code: str = "SZ000002", count: int = 20) -> dict:
+    """获取历史资金流如流出数据，每日数据
+
+    Args:
+        stock_code: 股票代码
+        count: 返回数据数量, 默认20
+    """
+    result = ball.capital_history(symbol=stock_code, count=count)
     return process_data(result)
 
 
@@ -131,23 +136,35 @@ def capital_assort(stock_code: str="SZ000002") -> dict:
 
 
 @mcp.tool()
-def blocktrans(stock_code: str="SZ000002") -> dict:
-    """获取大宗交易数据"""
-    result = ball.blocktrans(stock_code)
+def blocktrans(stock_code: str = "SZ000002", page: int = 1, size: int = 30) -> dict:
+    """获取大宗交易数据
+
+    Args:
+        stock_code: 股票代码
+        page: 页码, 默认1
+        size: 每页数量, 默认30
+    """
+    result = ball.blocktrans(symbol=stock_code, page=page, size=size)
     return process_data(result)
 
 
 @mcp.tool()
-def margin(stock_code: str="SZ000002") -> dict:
-    """获取融资融券数据"""
-    result = ball.margin(stock_code)
+def margin(stock_code: str = "SZ000002", page: int = 1, size: int = 180) -> dict:
+    """获取融资融券数据
+
+    Args:
+        stock_code: 股票代码
+        page: 页码, 默认1
+        size: 每页数量, 默认180
+    """
+    result = ball.margin(symbol=stock_code, page=page, size=size)
     return process_data(result)
 
 
 @mcp.tool()
 def indicator(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> dict:
     """按年度、季度获取业绩报表数据
-    
+
     Args:
         stock_code: 股票代码
         is_annals: 只获取年报,默认为1
@@ -158,9 +175,30 @@ def indicator(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) ->
 
 
 @mcp.tool()
+def indicator_v2(stock_code: str = "SZ000002", region: str = "cn", report_type: str = "all", is_detail: bool = True, count: int = 10) -> dict:
+    """获取业绩报表数据（新版接口）
+
+    Args:
+        stock_code: 股票代码
+        region: 市场区域, 默认"cn"
+        report_type: 报告类型, 默认"all"
+        is_detail: 是否返回明细数据, 默认True
+        count: 返回数据数量, 默认10条
+    """
+    result = ball.indicator_v2(
+        symbol=stock_code,
+        region=region,
+        type=report_type,
+        is_detail=is_detail,
+        count=count,
+    )
+    return process_data(result)
+
+
+@mcp.tool()
 def income(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> dict:
     """获取利润表数据
-    
+
     Args:
         stock_code: 股票代码
         is_annals: 只获取年报,默认为1
@@ -171,9 +209,30 @@ def income(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> di
 
 
 @mcp.tool()
+def income_v2(stock_code: str = "SZ000002", region: str = "cn", report_type: str = "all", is_detail: bool = True, count: int = 10) -> dict:
+    """获取利润表数据（新版接口）
+
+    Args:
+        stock_code: 股票代码
+        region: 市场区域, 默认"cn"
+        report_type: 报告类型, 默认"all"
+        is_detail: 是否返回明细数据, 默认True
+        count: 返回数据数量, 默认10条
+    """
+    result = ball.income_v2(
+        symbol=stock_code,
+        region=region,
+        type=report_type,
+        is_detail=is_detail,
+        count=count,
+    )
+    return process_data(result)
+
+
+@mcp.tool()
 def balance(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> dict:
     """获取资产负债表数据
-    
+
     Args:
         stock_code: 股票代码
         is_annals: 只获取年报,默认为1
@@ -184,9 +243,30 @@ def balance(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> d
 
 
 @mcp.tool()
+def balance_v2(stock_code: str = "SZ000002", region: str = "cn", report_type: str = "all", is_detail: bool = True, count: int = 10) -> dict:
+    """获取资产负债表数据（新版接口）
+
+    Args:
+        stock_code: 股票代码
+        region: 市场区域, 默认"cn"
+        report_type: 报告类型, 默认"all"
+        is_detail: 是否返回明细数据, 默认True
+        count: 返回数据数量, 默认10条
+    """
+    result = ball.balance_v2(
+        symbol=stock_code,
+        region=region,
+        type=report_type,
+        is_detail=is_detail,
+        count=count,
+    )
+    return process_data(result)
+
+
+@mcp.tool()
 def cash_flow(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) -> dict:
     """获取现金流量表数据
-    
+
     Args:
         stock_code: 股票代码
         is_annals: 只获取年报,默认为1
@@ -197,26 +277,74 @@ def cash_flow(stock_code: str="SZ000002", is_annals: int = 1, count: int = 5) ->
 
 
 @mcp.tool()
-def business(stock_code: str="SZ000002", count: int = 5) -> dict:
-    """获取主营业务构成数据
-    
+def cash_flow_v2(stock_code: str = "SZ000002", region: str = "cn", report_type: str = "all", is_detail: bool = True, count: int = 10) -> dict:
+    """获取现金流量表数据（新版接口）
+
     Args:
         stock_code: 股票代码
-        count: 返回数据数量,默认5条
+        region: 市场区域, 默认"cn"
+        report_type: 报告类型, 默认"all"
+        is_detail: 是否返回明细数据, 默认True
+        count: 返回数据数量, 默认10条
     """
-    result = ball.business(symbol=stock_code, count=count)
+    result = ball.cash_flow_v2(
+        symbol=stock_code,
+        region=region,
+        type=report_type,
+        is_detail=is_detail,
+        count=count,
+    )
+    return process_data(result)
+
+
+@mcp.tool()
+def business(stock_code: str = "SZ000002", is_annals: int = 1, count: int = 5) -> dict:
+    """获取主营业务构成数据
+
+    Args:
+        stock_code: 股票代码
+        is_annals: 只获取年报, 默认为1
+        count: 返回数据数量, 默认5条
+    """
+    result = ball.business(symbol=stock_code, is_annals=is_annals, count=count)
     return process_data(result)
 
 
 @mcp.tool()
 def top_holders(stock_code: str="SZ000002", circula: int = 1) -> dict:
     """获取十大股东数据
-    
+
     Args:
         stock_code: 股票代码
         circula: 只获取流通股,默认为1
     """
     result = ball.top_holders(symbol=stock_code, circula=circula)
+    return process_data(result)
+
+
+@mcp.tool()
+def industry(stock_code: str = "SZ000002") -> dict:
+    """获取F10所属行业信息"""
+    result = ball.industry(stock_code)
+    return process_data(result)
+
+
+@mcp.tool()
+def business_analysis(stock_code: str = "SZ000002") -> dict:
+    """获取F10业务分析数据"""
+    result = ball.business_analysis(stock_code)
+    return process_data(result)
+
+
+@mcp.tool()
+def shareschg(stock_code: str = "SZ000002", count: int = 5) -> dict:
+    """获取股本变动数据
+
+    Args:
+        stock_code: 股票代码
+        count: 返回数据数量, 默认5条
+    """
+    result = ball.shareschg(symbol=stock_code, count=count)
     return process_data(result)
 
 
@@ -231,6 +359,20 @@ def main_indicator(stock_code: str="SZ000002") -> dict:
 def holders(stock_code: str="SZ000002") -> dict:
     """获取F10股东人数数据"""
     result = ball.holders(stock_code)
+    return process_data(result)
+
+
+@mcp.tool()
+def skholder(stock_code: str = "SZ000002") -> dict:
+    """获取F10十大流通股东数据"""
+    result = ball.skholder(stock_code)
+    return process_data(result)
+
+
+@mcp.tool()
+def skholderchg(stock_code: str = "SZ000002") -> dict:
+    """获取F10十大流通股东变动数据"""
+    result = ball.skholderchg(stock_code)
     return process_data(result)
 
 
